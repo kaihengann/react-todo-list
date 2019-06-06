@@ -1,13 +1,133 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(253, 229, 196);
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+  width: 100%;
+  height: 100%;
+  padding-top: 4rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+h1 {
+  text-align: center;
+  padding: 1rem 0;
+  margin: 0;
+  text-transform: uppercase;
+  color: white;
+  background-color: #75cdd8;
+}
+
+ul {
+  margin: auto;
+  padding: 0;
+}
+
+ul li {
+  padding: 0.5rem 1rem;
+  list-style-type: none;
+  text-align: left;
+  font-size: 18px;
+}
+
+ul li:nth-child(odd) {
+  background: #f7f7f7;
+}
+
+div {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.container {
+  background-color: white;
+  max-width: 350px;
+  margin: 0 auto;
+  border-radius: 10px;
+  align-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.form {
+  height: 100px;
+}
+
+#todo-form {
+  display: inline;
+  width: 100%;
+  margin: 0;
+  padding: 0.5rem 1.5rem;
+  font-size: 18px;
+  font-weight: 100;
+  border: none;
+  background-color: #f7f7f7;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+#todo-form::placeholder {
+  color: rgba(182, 182, 182, 0.45);
+  font-family: "Nunito Sans", sans-serif;
+}
+#todo-form:hover::placeholder {
+  color: rgba(182, 182, 182, 0.9);
+  font-family: "Nunito Sans", sans-serif;
+}
+
+#todo-form-button {
+  position: relative;
+  bottom: 25px;
+  width: 90px;
+  height: 90px;
+  border: none;
+  padding: 0;
+  opacity: 0.6;
+  background: none;
+  background-position: center center;
+  background-size: 100% 100%;
+  background-image: url(http://pngimages.net/sites/default/files/add-button-png-image-77680.png);
+  transition: opacity 0.3s ease-in-out;
+}
+#todo-form-button:hover {
+  opacity: 1;
+}
+/* 
+button {
+  width: 15px;
+  height: 15px;
+  border: none;
+  padding: 0;
+  margin: 0.5rem;
+  background: none;
+  background-position: center center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+} */
+
+.unchecked {
+  background-image: url(https://img.icons8.com/ios/50/000000/unchecked-checkbox-filled.png);
+}
+
+.checked {
+  background-image: url(https://img.icons8.com/ios/50/000000/checked-2-filled.png);
+  opacity: 0.2;
+}
+
+.delbutton {
+  float: right;
+  opacity: 0;
+  background-image: url(https://img.icons8.com/windows/32/000000/trash.png);
+}
+ul li:hover > .delbutton {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.4s ease 0s;
+}
+
+.done {
+  text-decoration: line-through;
+  color: rgba(182, 182, 182, 0.5);
+}
+
+:active,
+:focus {
+  outline: 0;
 }
