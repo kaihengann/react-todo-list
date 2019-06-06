@@ -12,17 +12,16 @@ class App extends React.Component {
   handleSubmit = e => {
     if (e.key === "Enter" || e.type === "click") {
       this.state.tasks.push(this.state.input);
+      this.setState({ tasks: this.state.tasks });
     }
   };
 
   render() {
-    const tasks = this.state.tasks.map(task => (<Task taskName={task} /> ));
+    const taskItems = this.state.tasks.map(task => (<Task taskName={task} /> ));
 
     return (
       <React.Fragment>
-        <ul>
-          {tasks}
-        </ul>
+        <ul>{taskItems}</ul>
         <div>
           <Form onChange={this.handleChange} onKeyDown={this.handleSubmit} />
           <SubmitButton onClick={this.handleSubmit} />
@@ -48,9 +47,5 @@ const Form = ({ onKeyDown, onChange }) => {
 const SubmitButton = ({ onClick }) => {
   return <button type="submit" onClick={onClick} className="submitButton" />;
 };
-
-// Task -> taskname, delbutton
-// Form
-// Submit button
 
 export default App;
