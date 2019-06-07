@@ -31,14 +31,43 @@ class App extends React.Component {
   }
 }
 
-const Task = ({ taskName }) => {
-  return (
-    <li>
-      <span>{taskName}</span>
-      <button className="delButton" />
-    </li>
-  );
-};
+// upgrade Task to class
+class Task extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isChecked: false };
+  }
+
+  handleClick = () => {
+    this.setState({ isChecked: !this.state.isChecked })
+  };
+
+  render() {
+    if (!this.state.isChecked) {
+      return (
+      <li onClick={this.handleClick}>
+        <span className='unchecked'>{this.props.taskName}</span>
+        <button className="delButton" />
+      </li >
+      )}
+    return (
+      <li onClick={this.handleClick}>
+        <span className='checked'>{this.props.taskName}</span>
+        <button className="delButton" />
+      </li >
+    )
+    }
+}
+
+
+// const Task = ({ taskName, onClick }) => {
+//   return (
+//     <li>
+//       <span onClick={onClick}>{taskName}</span>
+//       <button className="delButton" />
+//     </li>
+//   );
+// };
 
 const Form = ({ onKeyDown, onChange }) => {
   return <input type="text" onChange={onChange} placeholder=">> Add Task" onKeyDown={onKeyDown} />;

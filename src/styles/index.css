@@ -101,7 +101,7 @@ button {
   background-size: 100% 100%;
   background-repeat: no-repeat;
 } */
-
+/* 
 .unchecked {
   background-image: url(https://img.icons8.com/ios/50/000000/unchecked-checkbox-filled.png);
 }
@@ -109,7 +109,7 @@ button {
 .checked {
   background-image: url(https://img.icons8.com/ios/50/000000/checked-2-filled.png);
   opacity: 0.2;
-}
+} */
 
 .delbutton {
   float: right;
@@ -122,10 +122,14 @@ ul li:hover > .delbutton {
   transition: all 0.4s ease 0s;
 }
 
-.done {
+.checked {
   text-decoration: line-through;
   color: rgba(182, 182, 182, 0.5);
 }
+
+/* .unchecked {
+  color: rgba(182, 182, 182, 0.5);
+} */
 
 :active,
 :focus {
