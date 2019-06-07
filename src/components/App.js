@@ -10,14 +10,15 @@ class App extends React.Component {
   handleChange = e => this.setState({ input: e.target.value });
 
   handleSubmit = e => {
-    if (e.key === "Enter" || e.type === "click") {
+    const inputWithNoSpaces = this.state.input.trim();
+    if ((e.key === "Enter" || e.type === "click") && inputWithNoSpaces !== "") {
       this.state.tasks.push(this.state.input);
       this.setState({ tasks: this.state.tasks });
     }
   };
 
   render() {
-    const taskItems = this.state.tasks.map(task => (<Task taskName={task} /> ));
+    const taskItems = this.state.tasks.map(task => <Task taskName={task} />);
 
     return (
       <React.Fragment>
@@ -31,54 +32,47 @@ class App extends React.Component {
   }
 }
 
-// upgrade Task to class
 class Task extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isChecked: false, isDeleted: false };
   }
 
-  handleClick = (e) => {
-    if (e.target.className !== 'delButton') {
-      this.setState({ isChecked: !this.state.isChecked })
+  handleClick = e => {
+    if (e.target.className !== "delButton") {
+      this.setState({ isChecked: !this.state.isChecked });
     }
   };
 
-  handleDelete = e => {
-    this.setState({ isDeleted: !this.state.isDeleted })
-  }
+  handleDelete = () => {
+    this.setState({ isDeleted: !this.state.isDeleted });
+  };
 
   render() {
-    if (this.state.isDeleted) {
-      return null;
-    } else if (!this.state.isChecked) {
-      return (
-      <li onClick={this.handleClick}>
-        <span className='unchecked'>{this.props.taskName}</span>
-        <button className="delButton" onClick={this.handleDelete}/>
-      </li >
-    )}
+    const taskDeleted = this.state.isDeleted;
+    const taskDone = this.state.isChecked;
     return (
-      <li onClick={this.handleClick}>
-        <span className='checked'>{this.props.taskName}</span>
-        <button className="delButton" />
-      </li >
-    )
-    }
+      !taskDeleted && (
+        <li onClick={this.handleClick}>
+          <span className={taskDone ? "checked" : "unchecked"}>
+            {this.props.taskName}
+          </span>
+          <button className="delButton" onClick={this.handleDelete} />
+        </li>
+      )
+    );
+  }
 }
 
-
-// const Task = ({ taskName, onClick }) => {
-//   return (
-//     <li>
-//       <span onClick={onClick}>{taskName}</span>
-//       <button className="delButton" />
-//     </li>
-//   );
-// };
-
 const Form = ({ onKeyDown, onChange }) => {
-  return <input type="text" onChange={onChange} placeholder=">> Add Task" onKeyDown={onKeyDown} />;
+  return (
+    <input
+      type="text"
+      onChange={onChange}
+      placeholder=">> Add Task"
+      onKeyDown={onKeyDown}
+    />
+  );
 };
 
 const SubmitButton = ({ onClick }) => {
