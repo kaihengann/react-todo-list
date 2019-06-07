@@ -131,6 +131,10 @@ ul li:hover > .delbutton {
   color: rgba(182, 182, 182, 0.5);
 } */
 
+.deleted {
+  display: none;
+}
+
 :active,
 :focus {
   outline: 0;

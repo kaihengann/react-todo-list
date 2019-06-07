@@ -35,21 +35,29 @@ class App extends React.Component {
 class Task extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isChecked: false };
+    this.state = { isChecked: false, isDeleted: false };
   }
 
-  handleClick = () => {
-    this.setState({ isChecked: !this.state.isChecked })
+  handleClick = (e) => {
+    if (e.target.className !== 'delButton') {
+      this.setState({ isChecked: !this.state.isChecked })
+    }
   };
 
+  handleDelete = e => {
+    this.setState({ isDeleted: !this.state.isDeleted })
+  }
+
   render() {
-    if (!this.state.isChecked) {
+    if (this.state.isDeleted) {
+      return null;
+    } else if (!this.state.isChecked) {
       return (
       <li onClick={this.handleClick}>
         <span className='unchecked'>{this.props.taskName}</span>
-        <button className="delButton" />
+        <button className="delButton" onClick={this.handleDelete}/>
       </li >
-      )}
+    )}
     return (
       <li onClick={this.handleClick}>
         <span className='checked'>{this.props.taskName}</span>
